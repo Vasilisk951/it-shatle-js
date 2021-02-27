@@ -23,6 +23,9 @@ input::-webkit-inner-spin-button {
 .active {
     display: flex!important;
 }
+.center {
+    margin: 0 auto;
+}
 .head {
     display: flex;
     background-color: gray;
@@ -38,7 +41,19 @@ input::-webkit-inner-spin-button {
     font-size: 18px;
 }
 .reg {
-    display: flex;
+    display: none;
+}
+.bg-opacity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: gray;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+.reg-enter, .reg-register {
+    z-index: 1;
 }
 .reg-form {
     display: none;
@@ -46,7 +61,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
     padding: 35px 20px;
     max-width: 285px;
-    margin: 0 auto;
+    margin: 50px auto;
     border: 1px solid transparent;
     border-radius: 35px;
     background-color: cornsilk;
