@@ -1,0 +1,95 @@
+* {
+    font-family: monospace;
+}
+body {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+button:focus {
+    outline: none;
+}
+input:focus {
+    outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.active {
+    display: flex!important;
+}
+.head {
+    display: flex;
+    background-color: gray;
+    justify-content: space-between
+}
+.nav {
+    display: flex;
+}
+.nav-link {
+    padding: 10px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+}
+.reg {
+    display: flex;
+}
+.reg-form {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 20px;
+    max-width: 285px;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    border-radius: 35px;
+    background-color: cornsilk;
+}
+.reg-form label {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    margin-bottom: 10px;
+}
+
+.reg-register-form .reg-form-gender {
+    flex-direction: row;
+    margin-right: 43px;
+}
+.reg-form-btn {
+    margin: 10px 0px 0px;
+    padding: 5px 0px;
+    width: 160px;
+}
+.btn-register {
+    margin: 10px 0 0;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.8s ease;
+}
+.btn-register:hover {
+    background-color: rgb(188, 192, 127);
+}
+.reg-btn {
+    display: inline-block;
+    cursor: pointer;
+}
+.reg-btn_enter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    background-color: gainsboro;
+    color: grey;
+    margin: 9px 10px;
+    font-size: 18px;
+    border-style: none;
+    box-shadow: 0 0 2px rgb(58 58 56 / 50%)
+}

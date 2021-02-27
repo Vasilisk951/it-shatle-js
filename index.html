@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="head">
+        <nav class="nav">
+            <a class="nav-link" href="">Главная</a>
+            <a class="nav-link" href="">Клиенты</a>
+            <a class="nav-link" href="">Карта</a>
+        </nav>
+        <button class="reg-btn reg-btn_enter">Вход</button>
+    </div>
+    <div class="reg">
+        <div class="reg-enter">
+            <form class="reg-enter-form reg-form">
+                <label>
+                    Ваш e-mail
+                    <input class="userEmail" type="text" name="userEmail">
+                </label>
+                <label>
+                    Ваш пароль
+                    <input class="userPswrd" type="password" name="userPswrd">
+                </label>
+                <button class="send-form reg-form-btn">Вход</button>
+                <span class="btn-register">Регистрация</span>
+            </form>
+        </div>
+        <div class="reg-register">
+            <form class="reg-register-form reg-form">
+                <label>
+                    Ваш имя
+                    <input type="text">
+                </label>
+                <label>
+                    Введите пароль
+                    <input type="password">
+                </label>
+                <label>
+                    Повторите пароль
+                    <input type="password">
+                </label>
+                <label>
+                    Компания
+                    <input type="text">
+                </label>
+                <label>
+                    Email
+                    <input type="email">
+                </label>
+                <label>
+                    Телефон
+                    <input type="number">
+                </label>
+                <label>
+                    Баланс
+                    <input type="number">
+                </label>
+                <label class="reg-form-gender">
+                    Ваш пол: 
+                    <input type="radio" name="gender">М
+                    <input type="radio" name="gender">Ж
+                </label>
+                <button class="reg-form-btn">Регистрация</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
