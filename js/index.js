@@ -30,6 +30,8 @@ closeModal.addEventListener('click', function () {
 // validation
 // validation enter
 
+
+const nav = document.querySelector('.nav')
 const userEmail = document.querySelector('.userEmail');
 const userPswrd = document.querySelector('.userPswrd');
 const sendFormBtn = document.querySelector('.send-form');
@@ -39,6 +41,8 @@ const PASSORD_REGEXP = /^(?=.*[A-Z].)(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z])
 
 
 formEnter.addEventListener('submit', function (event) {
+    event.preventDefault();
+
     if (!EMAIL_REGEXP.test(userEmail.value)) {
         event.preventDefault();
         userEmail.style.borderColor = 'red';
@@ -46,6 +50,24 @@ formEnter.addEventListener('submit', function (event) {
     if (!PASSORD_REGEXP.test(userPswrd.value)) {
         event.preventDefault();
         userPswrd.style.borderColor = 'red';
+    }
+
+    //организован вход в аккаунт и появление сайта авторизованному пользователю
+    for (let i in users) {
+        for (let key in users[i]) {
+            if(users[i][key] == userEmail.value) {
+                console.log(users[i][key]);
+                for (let value in users[i]) {
+                    if(users[i][value] == userPswrd.value) {
+                        console.log(users[i][value]);
+                        nav.classList.add('active');
+                        regBg.classList.remove('active');
+                        btnEnter.disabled = true;
+                        break;
+                    }
+                }
+            }
+        }
     }
 })
 
@@ -73,6 +95,8 @@ userEmail.addEventListener('input', updateInput);
 userPswrd.addEventListener('input', updatePassword);
 
 
+
+
 // validation registration
 
 const PHONE_REGEXP = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
@@ -89,6 +113,7 @@ const btnRegister = document.querySelector('.reg-form-btn')
 
 const newUser = document.querySelectorAll('form.reg-register-form input');
 
+//получаем ключи из local storage и добавляем в массив обекты полльзователей 
 let keyLocalStorage = Object.keys(localStorage);
 let users = [];
 
