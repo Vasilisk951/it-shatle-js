@@ -25,8 +25,6 @@ closeModal.addEventListener('click', function () {
     formEnter.classList.remove('active');
     formReg.classList.remove('active');
     regBg.classList.remove('active');
-
-
 })
 
 // validation
@@ -78,7 +76,7 @@ userPswrd.addEventListener('input', updatePassword);
 // validation registration
 
 const PHONE_REGEXP = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
-const USER_REGEXP = /^[a-z0-9_-]{2,16}$/;
+const USER_REGEXP = /^[A-Za-z0-9_-]{2,16}$/;
 
 const userName = document.querySelector('.userName');
 const pswrdReg = document.querySelector('.pswrd-reg');
@@ -87,6 +85,12 @@ const userCompany = document.querySelector('.user-Company');
 const userEmailReg = document.querySelector('.user-email');
 const userPhone = document.querySelector('.user-phone');
 const userBalance = document.querySelector('.user-balance');
+const btnRegister = document.querySelector('.reg-form-btn')
+
+const newUser = document.querySelectorAll('form.reg-register-form input');
+let users = [];
+localStorage.users
+
 
 formReg.addEventListener('submit', function (event) {
     if (!USER_REGEXP.test(userName.value)) {
@@ -110,6 +114,33 @@ formReg.addEventListener('submit', function (event) {
         event.preventDefault();
         userPhone.style.borderColor = 'red';
     }
+    if (userCompany.value == '') {
+        event.preventDefault();
+        userCompany.style.borderColor = 'red';
+    }
+    if (userBalance.value == '') {
+        event.preventDefault();
+        userBalance.style.borderColor = 'red';
+    }
+    //добавляем пользователя
+    let us = {
+        name: newUser[0].value,
+        password: newUser[1].value,
+        company: newUser[2].value,
+        email: newUser[4].value,
+        phone: newUser[5].value,
+        balance: newUser[6].value,
+        date: new Date(),
+    }
+    //добавляем пол пользователя
+    for(let i = 6; i < newUser.length; i++) {
+        if(newUser[i].checked == true) {
+            us.gender = newUser[i].value
+    }
+    }
+    //отправляем пользователя в массив 
+    users.push(us);
+
 })
 
 function updateRegName() {
@@ -155,3 +186,7 @@ pswrdRedDB.addEventListener('input', samePassword);
 
 
 // document.querySelector('input:checked').value получиение инпута пола 
+
+
+//create user
+
