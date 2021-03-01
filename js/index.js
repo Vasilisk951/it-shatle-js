@@ -21,7 +21,7 @@ btnReg.addEventListener('click', function () {
     parentFormEnter.classList.remove('center');
     parentFormRegister.classList.add('center');
 })
-closeModal.addEventListener('click', function() {
+closeModal.addEventListener('click', function () {
     formEnter.classList.remove('active');
     formReg.classList.remove('active');
     regBg.classList.remove('active');
@@ -29,3 +29,129 @@ closeModal.addEventListener('click', function() {
 
 })
 
+// validation
+// validation enter
+
+const userEmail = document.querySelector('.userEmail');
+const userPswrd = document.querySelector('.userPswrd');
+const sendFormBtn = document.querySelector('.send-form');
+
+const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+const PASSORD_REGEXP = /^(?=.*[A-Z].)(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{6,}$/;
+
+
+formEnter.addEventListener('submit', function (event) {
+    if (!EMAIL_REGEXP.test(userEmail.value)) {
+        event.preventDefault();
+        userEmail.style.borderColor = 'red';
+    }
+    if (!PASSORD_REGEXP.test(userPswrd.value)) {
+        event.preventDefault();
+        userPswrd.style.borderColor = 'red';
+    }
+})
+
+function validateEmail(value) {
+    return EMAIL_REGEXP.test(value);
+}
+function validatePassword(value) {
+    return PASSORD_REGEXP.test(value)
+}
+function updateInput() {
+    if (validateEmail(userEmail.value)) {
+        userEmail.style.borderColor = 'green';
+    } else {
+        userEmail.style.borderColor = 'red';
+    }
+}
+function updatePassword() {
+    if (validatePassword(userPswrd.value)) {
+        userPswrd.style.borderColor = 'green';
+    } else {
+        userPswrd.style.borderColor = 'red';
+    }
+}
+userEmail.addEventListener('input', updateInput);
+userPswrd.addEventListener('input', updatePassword);
+
+
+// validation registration
+
+const PHONE_REGEXP = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+const USER_REGEXP = /^[a-z0-9_-]{2,16}$/;
+
+const userName = document.querySelector('.userName');
+const pswrdReg = document.querySelector('.pswrd-reg');
+const pswrdRedDB = document.querySelector('.pswrd-reg-db');
+const userCompany = document.querySelector('.user-Company');
+const userEmailReg = document.querySelector('.user-email');
+const userPhone = document.querySelector('.user-phone');
+const userBalance = document.querySelector('.user-balance');
+
+formReg.addEventListener('submit', function (event) {
+    if (!USER_REGEXP.test(userName.value)) {
+        event.preventDefault();
+        userName.style.borderColor = 'red';
+    }
+    if (!PASSORD_REGEXP.test(pswrdReg.value)) {
+        event.preventDefault();
+        pswrdReg.style.borderColor = 'red';
+    }
+    if (pswrdReg.value !== pswrdRedDB.value) {
+        event.preventDefault();
+        pswrdRedDB.style.borderColor = 'red';
+        pswrdReg.style.borderColor = 'transparent';
+    }
+    if (!EMAIL_REGEXP.test(userEmailReg.value)) {
+        event.preventDefault();
+        userEmailReg.style.borderColor = 'red';
+    }
+    if (!PHONE_REGEXP.test(userPhone.value)) {
+        event.preventDefault();
+        userPhone.style.borderColor = 'red';
+    }
+})
+
+function updateRegName() {
+    if (USER_REGEXP.test(userName.value)) {
+        userName.style.borderColor = 'green';
+    } else {
+        userName.style.borderColor = 'red';
+    }
+}
+function updateRegPswrd() {
+    if (PASSORD_REGEXP.test(pswrdReg.value)) {
+        pswrdReg.style.borderColor = 'green';
+    } else {
+        pswrdReg.style.borderColor = 'red';
+    }
+}
+function samePassword() {
+    if (pswrdReg.value === pswrdRedDB.value) {
+        pswrdRedDB.style.borderColor = 'green';
+    } else {
+        pswrdRedDB.style.borderColor = 'red';
+    }
+}
+function updateRegEmail() {
+    if (EMAIL_REGEXP.test(userEmailReg.value)) {
+        userEmailReg.style.borderColor = 'green';
+    } else {
+        userEmailReg.style.borderColor = 'red';
+    }
+}
+function updateRegPhone() {
+    if (PHONE_REGEXP.test(userPhone.value)) {
+        userPhone.style.borderColor = 'green';
+    } else {
+        userPhone.style.borderColor = 'red';
+    }
+}
+userName.addEventListener('input', updateRegName);
+pswrdReg.addEventListener('input', updateRegPswrd);
+userEmailReg.addEventListener('input', updateRegEmail);
+userPhone.addEventListener('input', updateRegPhone);
+pswrdRedDB.addEventListener('input', samePassword);
+
+
+// document.querySelector('input:checked').value получиение инпута пола 
