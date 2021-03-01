@@ -88,9 +88,13 @@ const userBalance = document.querySelector('.user-balance');
 const btnRegister = document.querySelector('.reg-form-btn')
 
 const newUser = document.querySelectorAll('form.reg-register-form input');
-let users = [];
-localStorage.users
 
+let keyLocalStorage = Object.keys(localStorage);
+let users = [];
+
+for (let i = 0; i < keyLocalStorage.length; i++){
+    users.push(JSON.parse(localStorage.getItem(keyLocalStorage[i])));
+}
 
 formReg.addEventListener('submit', function (event) {
     if (!USER_REGEXP.test(userName.value)) {
@@ -122,24 +126,27 @@ formReg.addEventListener('submit', function (event) {
         event.preventDefault();
         userBalance.style.borderColor = 'red';
     }
-    //добавляем пользователя
+
+    //создаем пользователя
     let us = {
         name: newUser[0].value,
         password: newUser[1].value,
-        company: newUser[2].value,
+        company: newUser[3].value,
         email: newUser[4].value,
         phone: newUser[5].value,
         balance: newUser[6].value,
         date: new Date(),
     }
+
     //добавляем пол пользователя
-    for(let i = 6; i < newUser.length; i++) {
-        if(newUser[i].checked == true) {
+    for (let i = 6; i < newUser.length; i++) {
+        if (newUser[i].checked == true) {
             us.gender = newUser[i].value
+        }
     }
-    }
+
     //отправляем пользователя в массив 
-    users.push(us);
+    localStorage.setItem(us.name, JSON.stringify(us));
 
 })
 
