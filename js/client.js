@@ -35,30 +35,44 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
             tdRemove.append('❌');
         }
 
+
+        //работа с модальным окном
         let users = document.querySelectorAll('tbody tr');
         let user = document.querySelectorAll('tbody tr td:last-child');
-        const modaltext = document.querySelector('.modal-text');
+        const modalText = document.querySelector('.modal-text');
         const btnRemove = document.querySelector('.remove');
         const btnCancel = document.querySelector('.cancel');
         const modal = document.querySelector('.modal');
+        const infoRemove = document.querySelector('.info');
+        const infoClose = document.querySelector('.info-hide');
+        const infoDo = document.querySelector('.info-remove');
+ 
 
-
-        for(let i in user) {
-            user[i].addEventListener('click', function() {
+        for (let i = 0; i < user.length; i++) {
+            let b = user[i];
+            b.addEventListener('click', function () {
+                scroll(top);
+                document.body.style.overflow = 'hidden';
                 modal.classList.add('active');
-                let name = data[i].name;
-                btnCancel.addEventListener('click', function() {
-                    modal.classList.remove('active')
+                modalText.innerHTML = `Вы точно хотите удалить пользователя ${data[i].name}`;
+                btnCancel.addEventListener('click', function () {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'visible';
                 })
-                btnRemove.addEventListener('click', function() {
+                btnRemove.addEventListener('click', function () {
                     users[i].remove();
                     modal.classList.remove('active');
+                    document.body.style.overflow = 'visible';
+                    infoRemove.classList.add('active');
                 })
             })
         }
 
+        //закрытие сообщения об удалении пользователя 
+        infoClose.addEventListener('click', function () {
+            infoRemove.classList.toggle('active');
+        })
 
     }
-    );
-
+    )
 

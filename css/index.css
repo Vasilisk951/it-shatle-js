@@ -156,3 +156,28 @@ input::-webkit-inner-spin-button {
 .modal-text {
     margin: 0 0 20px 0;
 }
+.up {
+    margin: 10px 10px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: blue;
+}
+.info {
+    display: none;
+}
+.info-hide {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.info-remove {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: darksalmon;
+    font-size: large;
+}
