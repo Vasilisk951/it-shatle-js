@@ -1,4 +1,5 @@
 const btnEnter = document.querySelector('.reg-btn_enter');
+const btnOut = document.querySelector('.button-out');
 const formEnter = document.querySelector('.reg-enter-form');
 const btnReg = document.querySelector('.btn-register');
 const formReg = document.querySelector('.reg-register-form');
@@ -10,7 +11,7 @@ const closeModal = document.querySelector('.bg-opacity')
 
 btnEnter.addEventListener('click', function () {
     regBg.classList.toggle('active');
-    formEnter.classList.toggle('active');
+    formEnter.classList.add('active');
     formReg.classList.remove('active');
     parentFormRegister.classList.remove('center');
     parentFormEnter.classList.add('center');
@@ -31,7 +32,9 @@ closeModal.addEventListener('click', function () {
 // validation enter
 
 
-const nav = document.querySelector('.nav')
+const link = document.querySelectorAll('.nav-link');
+const nav = document.querySelector('.nav');
+const content = document.querySelector('.content');
 const userEmail = document.querySelector('.userEmail');
 const userPswrd = document.querySelector('.userPswrd');
 const sendFormBtn = document.querySelector('.send-form');
@@ -62,13 +65,23 @@ formEnter.addEventListener('submit', function (event) {
                         console.log(users[i][value]);
                         nav.classList.add('active');
                         regBg.classList.remove('active');
-                        btnEnter.disabled = true;
+                        btnEnter.style.display = 'none';
+                        btnOut.classList.add('active');
+                        link[0].classList.add('nav-link__active');
+                        content.style.display = 'block';
+                        content.append(navigator.userAgent)
                         break;
                     }
                 }
             }
         }
     }
+    btnOut.addEventListener('click', function() {
+        nav.classList.remove('active');
+        btnOut.classList.remove('active');
+        btnEnter.style.display = 'block';
+        link[0].classList.remove('nav-link__active');
+    })
 })
 
 function validateEmail(value) {
@@ -215,10 +228,3 @@ pswrdReg.addEventListener('input', updateRegPswrd);
 userEmailReg.addEventListener('input', updateRegEmail);
 userPhone.addEventListener('input', updateRegPhone);
 pswrdRedDB.addEventListener('input', samePassword);
-
-
-// document.querySelector('input:checked').value получиение инпута пола 
-
-
-//create user
-
