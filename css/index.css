@@ -137,3 +137,22 @@ input::-webkit-inner-spin-button {
 .client-tb tr td {
     border: 1px solid;
 }
+.client-tb tr td:last-child {
+    text-align: center;
+}
+.modal-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    padding: 20px;
+    top: 20%;
+    left: calc(50% - 190px);
+    width: 380px;
+    background-color: #fff;
+    font-size: 18px;
+    border-style: none;
+}
+.modal-text {
+    margin: 0 0 20px 0;
+}
