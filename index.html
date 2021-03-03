@@ -1,34 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>enter</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
-    <div class="head">
-        <nav class="nav">
-            <a class="nav-link" href="#">Главная</a>
-            <a class="nav-link" href="client.html">Клиенты</a>
-            <a class="nav-link" href="map.html">Карта</a>
-        </nav>
-        <button class="reg-btn reg-btn_enter">Вход</button>
-        <button class="button-out">Выйти</button>
-    </div>
+    <button class="reg-btn reg-btn_enter">Войти</a></button>
     <div class="reg">
         <div class="reg-enter">
             <form class="reg-enter-form reg-form">
                 <label>
                     Ваш e-mail
-                    <input class="userEmail" type="email" name="userEmail" placeholder="ivanov@gmail.com">
+                    <input class="userEmail" type="email" name="userEmail" placeholder="ivanov@gmail.com" required>
                 </label>
                 <label>
                     Ваш пароль
-                    <input class="userPswrd" type="password" name="userPswrd" placeholder="Пароль">
+                    <input class="userPswrd" type="password" name="userPswrd" placeholder="Пароль" required>
                 </label>
                 <button class="send-form reg-form-btn">Вход</button>
                 <span class="btn-register">Регистрация</span>
@@ -74,11 +64,7 @@
         </div>
         <div class="bg-opacity"></div>
     </div>
-    <div class="content">
-        <p>Hello world!</p>
-    </div>
+
     <script src="js/index.js"></script>
-
 </body>
-
 </html>

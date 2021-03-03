@@ -1,5 +1,4 @@
 const btnEnter = document.querySelector('.reg-btn_enter');
-const btnOut = document.querySelector('.button-out');
 const formEnter = document.querySelector('.reg-enter-form');
 const btnReg = document.querySelector('.btn-register');
 const formReg = document.querySelector('.reg-register-form');
@@ -9,14 +8,14 @@ const parentFormRegister = document.querySelector('.reg-register');
 const closeModal = document.querySelector('.bg-opacity')
 
 
-btnEnter.addEventListener('click', function () {
+ btnEnter.addEventListener('click', function () {
     regBg.classList.toggle('active');
     formEnter.classList.add('active');
     formReg.classList.remove('active');
     parentFormRegister.classList.remove('center');
     parentFormEnter.classList.add('center');
 })
-btnReg.addEventListener('click', function () {
+  btnReg.addEventListener('click', function () {
     formEnter.classList.remove('active');
     formReg.classList.add('active');
     parentFormEnter.classList.remove('center');
@@ -63,13 +62,7 @@ formEnter.addEventListener('submit', function (event) {
                 for (let value in users[i]) {
                     if(users[i][value] == userPswrd.value) {
                         console.log(users[i][value]);
-                        nav.classList.add('active');
-                        regBg.classList.remove('active');
-                        btnEnter.style.display = 'none';
-                        btnOut.classList.add('active');
-                        link[0].classList.add('nav-link__active');
-                        content.style.display = 'block';
-                        content.append(navigator.userAgent)
+                        location.href = 'homepage.html'
                         break;
                     }
                 }
@@ -135,7 +128,7 @@ for (let i = 0; i < keyLocalStorage.length; i++){
     users.push(JSON.parse(localStorage.getItem(keyLocalStorage[i])));
 }
 
-formReg.addEventListener('submit', function (event) {
+formReg.addEventListener('submit', function(event) {
     if (!USER_REGEXP.test(userName.value)) {
         event.preventDefault();
         userName.style.borderColor = 'red';
@@ -165,7 +158,7 @@ formReg.addEventListener('submit', function (event) {
         event.preventDefault();
         userBalance.style.borderColor = 'red';
     }
-
+    
     //создаем пользователя
     let us = {
         name: newUser[0].value,
@@ -217,6 +210,13 @@ function updateRegEmail() {
         userEmailReg.style.borderColor = 'red';
     }
 }
+function updateRegCompany() {
+    if (userCompany.value.length >= 2) {
+        userCompany.style.borderColor = 'green';
+    } else {
+        userCompany.style.borderColor = 'red';
+    }
+}
 function updateRegPhone() {
     if (PHONE_REGEXP.test(userPhone.value)) {
         userPhone.style.borderColor = 'green';
@@ -224,8 +224,18 @@ function updateRegPhone() {
         userPhone.style.borderColor = 'red';
     }
 }
+function updateRegBalance() {
+    if (userBalance.value != '') {
+        userBalance.style.borderColor = 'green';
+    } else {
+        userBalance.style.borderColor = 'red';
+    }
+}
+
 userName.addEventListener('input', updateRegName);
 pswrdReg.addEventListener('input', updateRegPswrd);
 userEmailReg.addEventListener('input', updateRegEmail);
 userPhone.addEventListener('input', updateRegPhone);
 pswrdRedDB.addEventListener('input', samePassword);
+userCompany.addEventListener('input', updateRegCompany);
+userBalance.addEventListener('input', updateRegBalance);
