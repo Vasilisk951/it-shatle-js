@@ -181,3 +181,6 @@ input::-webkit-inner-spin-button {
     background-color: darksalmon;
     font-size: large;
 }
+.gender{
+    margin: 10px 0;
+}

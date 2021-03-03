@@ -35,7 +35,6 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
             tdRemove.append('❌');
         }
 
-
         //работа с модальным окном
         let users = document.querySelectorAll('tbody tr');
         let user = document.querySelectorAll('tbody tr td:last-child');
@@ -46,9 +45,57 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
         const infoRemove = document.querySelector('.info');
         const infoClose = document.querySelector('.info-hide');
         const infoDo = document.querySelector('.info-remove');
- 
 
+        //окрашиваем пользователей со значением - isActive: false
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].isActive === false) {
+                users[i].style.backgroundColor = 'gray';
+            }
+        }
+
+        //получаю колическо женщин и мужчин 
+        const maleItem = document.querySelector('.male');
+        const femaleItem = document.querySelector('.female');
+
+        let male = 0;
+        let female = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].gender == "male") {
+                male += 1;
+            } else {
+                female += 1;
+            }
+        }
+
+        maleItem.append(`Всего мужчин: ${male}`);
+        femaleItem.append(`Всего женщин: ${female}`);
+
+        //получаю массив баланса
+
+        const balance = document.querySelectorAll('tbody td:nth-child(5)');
+        const balanceUser = document.querySelector('.balance');
+        let arr = [];
+
+        for (let i = 0; i < balance.length; i++) {
+            let b = balance[i].textContent.substr(1);
+            b = b.replace(',', '');
+            arr.push(Number(b));
+        }
+        //самое болье число в массиве
+        let maxNum = function () {
+            return Math.max.apply(null, arr);
+        };
+
+        let max = maxNum();
+
+        balanceUser.append(`Наибольший баланс: ${max}`);
+       
+        
+
+        //модальное окно для подверждения удаления пользователя 
         for (let i = 0; i < user.length; i++) {
+            user[i].style.cursor = 'pointer';
             let b = user[i];
             b.addEventListener('click', function () {
                 scroll(top);

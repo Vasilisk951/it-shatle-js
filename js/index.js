@@ -130,6 +130,7 @@ const newUser = document.querySelectorAll('form.reg-register-form input');
 let keyLocalStorage = Object.keys(localStorage);
 let users = [];
 
+//получаем пользователей из LocalStorage и добавляем их в массив
 for (let i = 0; i < keyLocalStorage.length; i++){
     users.push(JSON.parse(localStorage.getItem(keyLocalStorage[i])));
 }
@@ -183,7 +184,7 @@ formReg.addEventListener('submit', function (event) {
         }
     }
 
-    //отправляем пользователя в массив 
+    //отправляем пользователя в localStorage
     localStorage.setItem(us.name, JSON.stringify(us));
 
 })
