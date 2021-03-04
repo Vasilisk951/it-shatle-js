@@ -1,3 +1,5 @@
+import '../css/index.css';
+
 const btnEnter = document.querySelector('.reg-btn_enter');
 const formEnter = document.querySelector('.reg-enter-form');
 const btnReg = document.querySelector('.btn-register');
@@ -69,12 +71,6 @@ formEnter.addEventListener('submit', function (event) {
             }
         }
     }
-    btnOut.addEventListener('click', function() {
-        nav.classList.remove('active');
-        btnOut.classList.remove('active');
-        btnEnter.style.display = 'block';
-        link[0].classList.remove('nav-link__active');
-    })
 })
 
 function validateEmail(value) {

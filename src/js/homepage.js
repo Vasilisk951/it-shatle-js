@@ -1,3 +1,5 @@
+import '../css/index.css';
+
 const linkOne = document.querySelector('.nav-link:nth-child(1)');
 const content = document.querySelector('.content');
 

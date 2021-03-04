@@ -1,3 +1,11 @@
+import '../css/index.css';
+
+const linkOne = document.querySelector('.nav-link:nth-child(2)');
+
+linkOne.classList.add('nav-link__active');
+
+
+
 const tBody = document.querySelector('.t-body');
 
 fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1b/raw/677516ee3bd278f7e3d805108596ca431d00b629/db.json')

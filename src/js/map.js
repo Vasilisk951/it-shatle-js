@@ -50,3 +50,5 @@ function initMap() {
       infowindow.open(marker.get("map"), marker);
     });
   }
+  
+  window.initMap = initMap;
