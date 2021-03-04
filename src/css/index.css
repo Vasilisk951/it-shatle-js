@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 * {
     font-family: monospace;
 }
@@ -21,14 +28,20 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 .active {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
     display: flex!important;
 }
 .center {
     margin: 0 auto;
 }
 .head {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     background-color: gray;
 }
 .nav-link {
@@ -59,7 +72,8 @@ input::-webkit-inner-spin-button {
     margin: 9px 10px;
     font-size: 18px;
     border-style: none;
-    box-shadow: 0 0 2px rgb(58 58 56 / 50%)
+    -webkit-box-shadow: 0 0 2px rgb(58 58 56 / 50%);
+            box-shadow: 0 0 2px rgb(58 58 56 / 50%)
 }
 .button-out {
     background-color: gainsboro;
@@ -67,7 +81,8 @@ input::-webkit-inner-spin-button {
     margin: 9px 10px;
     font-size: 18px;
     border-style: none;
-    box-shadow: 0 0 2px rgb(58 58 56 / 50%);
+    -webkit-box-shadow: 0 0 2px rgb(58 58 56 / 50%);
+            box-shadow: 0 0 2px rgb(58 58 56 / 50%);
     cursor: pointer;
 }
 .reg {
@@ -88,8 +103,13 @@ input::-webkit-inner-spin-button {
 }
 .reg-form {
     display: none;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 35px 20px;
     max-width: 285px;
     border: 1px solid transparent;
@@ -97,14 +117,22 @@ input::-webkit-inner-spin-button {
     background-color: cornsilk;
 }
 .reg-form label {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     max-width: 250px;
     margin-bottom: 10px;
 }
 
 .reg-register-form .reg-form-gender {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     margin-right: 43px;
 }
 .reg-form-btn {
@@ -117,6 +145,8 @@ input::-webkit-inner-spin-button {
     text-decoration: underline;
     cursor: pointer;
     text-align: center;
+    -webkit-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
     transition: all 0.8s ease;
 }
 .btn-register:hover {
@@ -134,9 +164,16 @@ input::-webkit-inner-spin-button {
     text-align: center;
 }
 .modal-message {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     position: absolute;
     padding: 20px;
     top: 20%;
