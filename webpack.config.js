@@ -59,7 +59,10 @@ module.exports = {
                 'out'
             ],
             template: './homepage.html',
-            filename: 'homepage.html'
+            filename: 'homepage.html',
+            minify: {
+                collapseWhitespace: true,
+            }
         }),
         new HTMLWebpackPlugin({
             chunks: [
@@ -68,6 +71,9 @@ module.exports = {
             ],
             template: './client.html',
             filename: 'client.html',
+            minify: {
+                collapseWhitespace: true,
+            },
             removeComments: true
         }),
         new HTMLWebpackPlugin({
@@ -77,7 +83,10 @@ module.exports = {
                 'out'
             ],
             template: './map.html',
-            filename: 'map.html'
+            filename: 'map.html',
+            minify: {
+                collapseWhitespace: true,
+            }
         })
     ],
 }
