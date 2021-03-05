@@ -13,6 +13,16 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
         return response.json();
     })
     .then((data) => {
+
+        //получаем ключи из local storage и добавляем в массив обекты полльзователей 
+        let keyLocalStorage = Object.keys(localStorage);
+        let userLocalStorsage = [];
+
+        //получаем пользователей из LocalStorage и добавляем их в массив
+        for (let i = 0; i < keyLocalStorage.length; i++) {
+            data.push(JSON.parse(localStorage.getItem(keyLocalStorage[i])));
+        }
+        //создание и наполнение таблицы
         for (let i = 0; i < data.length; i++) {
 
             let tr = document.createElement('tr');
@@ -40,6 +50,35 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
             tdPhone.append(data[i].phone);
             tdBalance.append(data[i].balance);
             tdDate.append(data[i].registered);
+            tdRemove.append('❌');
+        }
+
+        for (let i = 0; i < userLocalStorsage.length; i++) {
+            let tr = document.createElement('tr');
+            let tdName = document.createElement('td');
+            let tdCompany = document.createElement('td');
+            let tdEmail = document.createElement('td');
+            let tdPhone = document.createElement('td');
+            let tdBalance = document.createElement('td');
+            let tdDate = document.createElement('td');
+            let tdRemove = document.createElement('td');
+
+            tBody.appendChild(tr);
+
+            tr.append(tdName);
+            tr.append(tdCompany);
+            tr.append(tdEmail);
+            tr.append(tdPhone);
+            tr.append(tdBalance);
+            tr.append(tdDate);
+            tr.append(tdRemove);
+
+            tdName.append(userLocalStorsage[i].name);
+            tdCompany.append(userLocalStorsage[i].company);
+            tdEmail.append(userLocalStorsage[i].email);
+            tdPhone.append(userLocalStorsage[i].phone);
+            tdBalance.append(userLocalStorsage[i].balance);
+            tdDate.append(userLocalStorsage[i].date);
             tdRemove.append('❌');
         }
 
@@ -79,27 +118,31 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
         maleItem.append(`Всего мужчин: ${male}`);
         femaleItem.append(`Всего женщин: ${female}`);
 
-        //получаю массив баланса
+        //функция подсчета баланса
+        function maxBalance() {
+            const balance = document.querySelectorAll('tbody td:nth-child(5)');
+            const balanceUser = document.querySelector('.balance');
 
-        const balance = document.querySelectorAll('tbody td:nth-child(5)');
-        const balanceUser = document.querySelector('.balance');
-        let arr = [];
+            //получаю массив баланса
+            let arr = [];
 
-        for (let i = 0; i < balance.length; i++) {
-            let b = balance[i].textContent.substr(1);
-            b = b.replace(',', '');
-            arr.push(Number(b));
+            for (let i = 0; i < balance.length; i++) {
+                let b = balance[i].innerText.substr(1);
+                b = b.replace(',', '');
+                arr.push(Number(b));
+            }
+            //самое большое число в массиве
+            let maxNum = function () {
+                return Math.max.apply(null, arr);
+            };
+
+            let max = maxNum();
+            balanceUser.innerHTML = '';
+            balanceUser.append(`Наибольший баланс: $${max}`);
         }
-        //самое болье число в массиве
-        let maxNum = function () {
-            return Math.max.apply(null, arr);
-        };
 
-        let max = maxNum();
+        maxBalance()
 
-        balanceUser.append(`Наибольший баланс: ${max}`);
-       
-        
 
         //модальное окно для подверждения удаления пользователя 
         for (let i = 0; i < user.length; i++) {
@@ -116,9 +159,11 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
                 })
                 btnRemove.addEventListener('click', function () {
                     users[i].remove();
+                    localStorage.removeItem(users[i].cells[0].textContent)
                     modal.classList.remove('active');
                     document.body.style.overflow = 'visible';
                     infoRemove.classList.add('active');
+                    maxBalance()
                 })
             })
         }
@@ -130,4 +175,3 @@ fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1
 
     }
     )
-

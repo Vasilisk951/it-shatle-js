@@ -21,7 +21,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
+                test: /.s?css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
@@ -67,7 +67,8 @@ module.exports = {
                 'out'
             ],
             template: './client.html',
-            filename: 'client.html'
+            filename: 'client.html',
+            removeComments: true
         }),
         new HTMLWebpackPlugin({
             chunks: [
@@ -79,5 +80,4 @@ module.exports = {
             filename: 'map.html'
         })
     ],
-
 }
